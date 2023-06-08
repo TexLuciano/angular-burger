@@ -1,0 +1,25 @@
+
+<lib-toastify-toast-container></lib-toastify-toast-container>
+
+<section class="container">
+   <form class="example-form" [formGroup]="loginUser" (ngSubmit)="submit()">
+    
+      <mat-form-field class="example-full-width">
+         <mat-label>Email</mat-label>
+         <input matInput placeholder="Ex. Pizza" formControlName="email">
+      
+          <mat-error *ngIf="loginUser.controls['email'].hasError('required')">Campo "Email" é obrigatorio</mat-error>
+          <mat-error *ngIf="loginUser.controls['email'].hasError('email')">Email invalido</mat-error> 
+   
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+         <mat-label>Senha</mat-label>
+         <input matInput placeholder="Ex. Pizza" formControlName="password">
+          <mat-error *ngIf="loginUser.controls['password'].hasError('required')">Campo "Senha" é obrigatorio</mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit">Login</button>
+        <a  [routerLink]="['/register']" class="link" >Não tem conta?</a>
+   </form>
+ 
+</section>

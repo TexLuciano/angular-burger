@@ -1,0 +1,35 @@
+
+<lib-toastify-toast-container></lib-toastify-toast-container>
+
+<section class="container">
+   <form class="example-form" [formGroup]="formCadastroUser" (ngSubmit)="submit()" #formDir="ngForm">
+      <mat-form-field class="example-full-width">
+         <mat-label>Nome</mat-label>
+         <input matInput placeholder="Ex. Pizza" formControlName="name">
+
+          <mat-error *ngIf="formCadastroUser.controls['name'].hasError('required')">Campo "Nome" é obrigatorio</mat-error>
+
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+         <mat-label>Email</mat-label>
+         <input matInput placeholder="Ex. Pizza" formControlName="email">
+        
+          <mat-error *ngIf="formCadastroUser.controls['email'].hasError('required')">Campo "Email" é obrigatorio</mat-error>
+          <mat-error *ngIf="formCadastroUser.controls['email'].hasError('email')">Email invalido</mat-error>
+   
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+         <mat-label>Senha</mat-label>
+         <input matInput placeholder="Ex. Pizza" formControlName="password">
+          <mat-error *ngIf="formCadastroUser.controls['password'].hasError('required')">Campo "Senha" é obrigatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+         <mat-label>Confirme a Senha</mat-label>
+         <input matInput placeholder="Ex. Pizza" formControlName="confimPassword">
+          <mat-error *ngIf="formCadastroUser.controls['confimPassword'].hasError('required')">Campo "Confirme a Senha" é obrigatorio</mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary" type="submit">Sing Up</button>
+        <a  [routerLink]="['/login']" >Já tem conta?</a>
+   </form>
+ 
+</section>
