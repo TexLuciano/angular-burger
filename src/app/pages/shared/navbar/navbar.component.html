@@ -1,0 +1,11 @@
+<mat-toolbar class="toolbar">
+   <nav class="nav">
+      <a [routerLink]="['/home']">AngularBurger</a>
+      <div class="links">
+         <a [routerLink]="['/home']"  routerLinkActive="active-link">Home</a>
+         <a [routerLink]="['/produtos']"  routerLinkActive="active-link">Produtos</a>
+         <a [routerLink]="['/cart']"  routerLinkActive="active-link"><mat-icon>add_shopping_cart</mat-icon></a>
+         <button (click)="logOut()" class="button">Sair <mat-icon>arrow_forward</mat-icon></button>
+      </div>
+   </nav>
+</mat-toolbar>

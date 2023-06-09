@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
@@ -23,17 +24,24 @@ export class LoginComponent implements OnInit {
 
   loginUser!: FormGroup;
 
+
+
   submit() {
     if (this.loginUser.valid) {
       try {
         this.authService.loginUser(this.loginUser.value).subscribe(
           (res) => {
-            console.log(res);
+          
+            
             if (res.token) {
-              localStorage.setItem('userAngularBurger', res.token);
+            
+              sessionStorage.setItem('userAngularBurger', res.token);
             }
             res.name && this.toast.success(`Bem vindo ${res.name && res.name}`);
-            res.name && this.router.navigate(['home']);
+
+            setTimeout(() => {
+              res.name && this.router.navigate(['home']);
+            }, 1000);
           },
           (error: HttpErrorResponse) => {
             if (error) {

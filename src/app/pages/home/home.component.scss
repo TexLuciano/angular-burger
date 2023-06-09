@@ -1,0 +1,48 @@
+:host {
+
+   .container-offer {
+      display: grid;
+      width: 100vw;
+      margin-top: 50px;
+      margin: 0 auto;
+      .title{
+         margin: 30px auto;
+         font-size: 3rem;
+         text-transform: uppercase;
+      }
+
+      .produtos {
+         display: flex;
+         flex-wrap: wrap;
+         margin: 0 30px;
+         place-content: center;
+         place-items: center;
+         gap: 30px;
+
+         .card {
+            width: 250px;
+            height: 300px;
+            background: #dfdfdf;
+            list-style: none;
+            display: grid;
+            justify-content: center;
+            border-radius: 15px;
+            place-items: center;
+            padding: 15px;
+
+            img {
+
+               border-radius: 15px;
+               width: 200px;
+               height: 150px;
+               display: block;
+               object-fit: cover;
+            }
+
+            p {
+               font-size: 1.2rem;
+            }
+         }
+      }
+   }
+}

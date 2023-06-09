@@ -1,0 +1,29 @@
+:host {
+   .container {
+
+      display: grid;
+      place-content: center;
+      margin-top: 50px;
+      background: red;
+      border-radius: 15px;
+
+      .mat-elevation-z8{
+         width: max-content;
+         padding: 20px;
+      }
+  
+      .header {
+         display: flex;
+         gap: 50px;
+         list-style: none;
+      }
+
+      .img{
+         width: 100px;
+         display: block;
+         object-fit: cover;
+      }
+   }
+
+
+}

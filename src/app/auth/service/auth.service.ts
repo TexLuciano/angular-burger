@@ -1,36 +1,40 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http'
-import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, } from '@angular/common/http';
+import { BehaviorSubject, Observable,  } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService  {
-
-  constructor(private http: HttpClient) { }
+export class AuthService {
+  constructor(
+    private http: HttpClient,
+    private routes: Router
+  ) {}
   base = 'http://localhost:3000/';
 
+  private subjectLogin: BehaviorSubject<any> = new BehaviorSubject(false);
 
-private handleError(error: HttpErrorResponse) {
-  if (error.status === 409) {
-    console.error('An error occurred:', error.error);
-  } else {
-
-    console.error(
-      `Backend returned code ${error.status}, body was: `, error.error);
+  createUser(user: any): Observable<any> {
+    return this.http.post(`${this.base}users`, user);
   }
 
-  return throwError(() => new Error('Something bad happened; please try again later.'));
-}
-
-  createUser(user:any):Observable<any> {
-    return  this.http.post(`${this.base}users`, user).pipe(
-      catchError(this.handleError)
-    )
+  loginUser(user: any): Observable<any> {
+    return this.http.post(`${this.base}sessions`, user);
   }
 
-  loginUser(user:any):Observable<any>{
-     return  this.http.post(`${this.base}sessions`, user)
+  hasUser(): Observable<any> {
+    const token = sessionStorage.getItem('userAngularBurger');
+    if (token) {
+      this.subjectLogin.next(true);
+    }
+    return this.subjectLogin.asObservable();
   }
 
+  logOut() {
+  
+    this.subjectLogin.next(false);
+    sessionStorage.removeItem('userAngularBurger');
+      this.routes.navigateByUrl('/login')
+  }
 }

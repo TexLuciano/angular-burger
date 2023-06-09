@@ -1,2 +1,24 @@
-<a href="/register">register</a>
-<div>dsiajhdsauidhausdhsadu</div>
+<app-navbar></app-navbar>
+
+
+
+<section class="container-offer">
+   <h1 class="title">Categorias</h1>
+   <ul class="produtos">
+      <mat-card *ngFor="let item of categories" class="card">
+         <img [src]="item.url" [alt]="item.name" />
+         <button mat-raised-button color="primary">{{item.name}}</button>
+      </mat-card>
+   </ul>
+</section>
+<section class="container-offer">
+   <h1 class="title">ofertas</h1>
+   <ul class="produtos">
+      <mat-card *ngFor="let item of products" class="card">
+         <img [src]="item.url" [alt]="item.name" />
+         <p>{{item.name}}</p>
+         <p>{{item.price | formatecurrency}}</p>
+         <button mat-raised-button color="primary" (click)="putProductInCart(item)">Peça Agora</button>
+      </mat-card>
+   </ul>
+</section>
