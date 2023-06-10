@@ -1,3 +1,4 @@
+
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from './types/types';
@@ -6,7 +7,7 @@ import { Product } from './types/types';
   providedIn: 'root',
 })
 export class CartService {
-  constructor() {
+  constructor( ) {
     this.loadProduct();
   }
 
@@ -37,6 +38,7 @@ export class CartService {
     if (cartIndex >= 0) {
       currentCartProduct[cartIndex].quantity += +1;
       this.cartProductsSubject.next(currentCartProduct);
+
     } else {
       product.quantity = 1;
       const newCartProducts = [...currentCartProduct, product];

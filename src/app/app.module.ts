@@ -20,6 +20,7 @@ import { PagesModule } from './pages/pages.module';
     AuthModule,
     BrowserAnimationsModule,
     HttpClientModule,
+   
  
   ],
   providers: [
@@ -29,6 +30,7 @@ import { PagesModule } from './pages/pages.module';
       provide: LOCALE_ID,
       useValue: 'pt-PT',
     },
+
   ],
   bootstrap: [AppComponent],
 })

@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatecurrencyPipe implements PipeTransform {
 
-  transform(value: string, ...args: unknown[]): unknown {
+  transform(value: string | number, ...args: unknown[]): unknown {
       if (value) {
       return new Intl.NumberFormat('pt-BR', {
         style: 'currency',

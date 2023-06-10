@@ -1,1 +1,16 @@
 <app-navbar></app-navbar>
+
+<mat-tab-group *ngIf="categories" mat-stretch-tabs="false" mat-align-tabs="center" class="container" [selectedIndex]="category " (selectedIndexChange)="tabChanged($event)">
+
+
+   <mat-tab [label]="item.name" *ngFor="let item of categories " index class="tab-item">
+      <div class="container-flex">
+         <div *ngFor="let product of item.products" class="card-product">
+            <img [src]="product.url" [alt]="product.name">
+            <p>{{product.name}}</p>
+            <p>{{product.price | formatecurrency}}</p>
+            <button mat-raised-button color="primary">Adicionar</button>
+         </div>
+      </div>
+   </mat-tab>
+</mat-tab-group>

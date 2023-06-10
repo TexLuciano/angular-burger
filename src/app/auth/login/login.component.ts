@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
         this.authService.loginUser(this.loginUser.value).subscribe(
           (res) => {
           
-            
             if (res.token) {
             
               sessionStorage.setItem('userAngularBurger', res.token);

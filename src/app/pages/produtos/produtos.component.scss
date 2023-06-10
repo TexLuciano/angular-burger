@@ -1,0 +1,38 @@
+:host {
+   .container-flex {
+      display: flex;
+      gap: 20px;
+      font-weight: bold;
+
+   }
+
+   .container {
+
+      display: grid;
+      place-content: center;
+      place-items: center;
+      margin-top: 20px;
+
+      .card-product {
+         margin-top: 50px;
+         width: 200px;
+         height: 260px;
+         background: #dfdfdf;
+         border-radius: 15px;
+         display: grid;
+         place-content: center;
+         place-items: center;
+
+         img {
+            width: 170px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 5px;
+
+         }
+
+      
+      }
+   }
+}

@@ -14,7 +14,7 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
          <mat-label>Senha</mat-label>
-         <input matInput placeholder="Ex. Pizza" formControlName="password">
+         <input matInput type="password" formControlName="password">
           <mat-error *ngIf="loginUser.controls['password'].hasError('required')">Campo "Senha" é obrigatorio</mat-error>
       </mat-form-field>
 

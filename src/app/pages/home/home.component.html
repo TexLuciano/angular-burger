@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-
+<lib-toastify-toast-container [autoClose]="1000" ></lib-toastify-toast-container>
 
 
 <section class="container-offer">
@@ -7,7 +7,7 @@
    <ul class="produtos">
       <mat-card *ngFor="let item of categories" class="card">
          <img [src]="item.url" [alt]="item.name" />
-         <button mat-raised-button color="primary">{{item.name}}</button>
+         <button mat-raised-button color="primary" (click)="getCategory(item)">{{item.name}}</button>
       </mat-card>
    </ul>
 </section>

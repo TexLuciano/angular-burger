@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, } from '@angular/common/http';
 import { BehaviorSubject, Observable,  } from 'rxjs';
 import { Router } from '@angular/router';
+import { SessionUser, User } from 'src/app/pages/types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +14,13 @@ export class AuthService {
   ) {}
   base = 'http://localhost:3000/';
 
-  private subjectLogin: BehaviorSubject<any> = new BehaviorSubject(false);
+  private subjectLogin: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  createUser(user: any): Observable<any> {
+  createUser(user: User): Observable<any> {
     return this.http.post(`${this.base}users`, user);
   }
 
-  loginUser(user: any): Observable<any> {
+  loginUser(user: SessionUser): Observable<any> {
     return this.http.post(`${this.base}sessions`, user);
   }
 

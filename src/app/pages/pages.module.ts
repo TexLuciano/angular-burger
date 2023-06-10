@@ -1,3 +1,4 @@
+import { ToastService , AngularToastifyModule} from 'angular-toastify';
 import { FormatecurrencyPipe } from './../pipes/formatecurrency.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import { MatTableModule } from '@angular/material/table'
 import { AsyncPipe } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
     CartComponent, 
     FormatecurrencyPipe,
   ],
-  providers:[AsyncPipe],
+  providers:[AsyncPipe ,ToastService],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -32,7 +34,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatCardModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    AngularToastifyModule,
+    MatTabsModule
   ],
   
 })

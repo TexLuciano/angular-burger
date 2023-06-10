@@ -18,10 +18,23 @@ export interface Product {
 }
 
 export interface Categories {
-  createdAt:string;
-  id:number;
+  createdAt?:string;
+  id?:number;
   name:string;
-  path:string;
-  updatedAt:string;
-  url:string;
+  path?:string;
+  updatedAt?:string;
+  url?:string;
+  products?:Product[]
+}
+
+export interface User{
+   name:string
+   password:string
+   email:string
+}
+
+export interface SessionUser{
+ 
+   password:string
+   email:string
 }

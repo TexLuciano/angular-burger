@@ -20,12 +20,12 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
          <mat-label>Senha</mat-label>
-         <input matInput placeholder="Ex. Pizza" formControlName="password">
+         <input matInput type="password" formControlName="password">
           <mat-error *ngIf="formCadastroUser.controls['password'].hasError('required')">Campo "Senha" é obrigatorio</mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
-         <mat-label>Confirme a Senha</mat-label>
-         <input matInput placeholder="Ex. Pizza" formControlName="confimPassword">
+         <mat-label  >Confirme a Senha</mat-label>
+         <input matInput type="password" formControlName="confimPassword">
           <mat-error *ngIf="formCadastroUser.controls['confimPassword'].hasError('required')">Campo "Confirme a Senha" é obrigatorio</mat-error>
       </mat-form-field>
       <button mat-flat-button color="primary" type="submit">Sing Up</button>
