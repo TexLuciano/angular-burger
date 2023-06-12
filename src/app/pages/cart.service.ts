@@ -16,7 +16,9 @@ export class CartService {
   private cartProductsSubject: BehaviorSubject<Product[]> = new BehaviorSubject<
     Product[]
   >([]);
+  
   public cartProducts$ = this.cartProductsSubject.asObservable();
+
 
   private stake(products: Product[]): void {
     localStorage.setItem('cart', JSON.stringify(products));

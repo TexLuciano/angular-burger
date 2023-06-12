@@ -10,18 +10,16 @@ import { authorizationGuard } from './guard/authorization.guard';
 import { ServiceInterceptor } from './auth/service.interceptor';
 import { PagesModule } from './pages/pages.module';
 
-
-
 @NgModule({
-  declarations: [AppComponent,  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     BrowserAnimationsModule,
     HttpClientModule,
-   
- 
+    PagesModule,
+    RouterModule
   ],
   providers: [
     authorizationGuard,
@@ -30,7 +28,6 @@ import { PagesModule } from './pages/pages.module';
       provide: LOCALE_ID,
       useValue: 'pt-PT',
     },
-
   ],
   bootstrap: [AppComponent],
 })

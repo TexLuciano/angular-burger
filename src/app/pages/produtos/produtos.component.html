@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<lib-toastify-toast-container></lib-toastify-toast-container>
 
 <mat-tab-group *ngIf="categories" mat-stretch-tabs="false" mat-align-tabs="center" class="container" [selectedIndex]="category " (selectedIndexChange)="tabChanged($event)">
 
@@ -9,7 +10,7 @@
             <img [src]="product.url" [alt]="product.name">
             <p>{{product.name}}</p>
             <p>{{product.price | formatecurrency}}</p>
-            <button mat-raised-button color="primary">Adicionar</button>
+            <button mat-raised-button color="primary" (click)="addProduct(product)">Adicionar</button>
          </div>
       </div>
    </mat-tab>

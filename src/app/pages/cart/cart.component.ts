@@ -19,11 +19,10 @@ export class CartComponent implements OnInit {
   // cartProducts!:Observable<Product[]>
 
   constructor(
-    private cartService: CartService, 
+    private cartService: CartService,
     private api: ServiceService,
     private toast: ToastService
-    
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Product>(this.cartService.index());
@@ -32,9 +31,9 @@ export class CartComponent implements OnInit {
   }
 
   cartProductPlus(product: Product) {
-    this.ObterTotal();
     this.cartService.plusProduct(product);
     this.dataSource.data = this.cartService.index();
+    this.ObterTotal();
   }
   removeProduct(product: Product) {
     this.cartService.removeProduct(product);
@@ -52,7 +51,7 @@ export class CartComponent implements OnInit {
 
   sendOrder() {
     const cartArray = localStorage.getItem('cart');
-  
+
     if (cartArray) {
       const cart = JSON.parse(cartArray);
 
@@ -62,20 +61,17 @@ export class CartComponent implements OnInit {
 
       this.api.sendOrder(newArray).subscribe(
         (res) => {
-            if(res.status === 201){
-                this.toast.success('Pedido Realizado!')
-            }
-          
-          },
+          if (res.user) {
+            this.toast.success('Pedido Realizado!');
+          }
+        },
 
-
-        (error:HttpErrorResponse)=>{
-            if(error){
-              this.toast.error('Tente mais tarde')
-            }
+        (error: HttpErrorResponse) => {
+          if (error) {
+            this.toast.error('Tente mais tarde');
+          }
         }
-        
-        );
+      );
     }
   }
 

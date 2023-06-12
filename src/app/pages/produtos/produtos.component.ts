@@ -1,8 +1,10 @@
+import { ToastService } from 'angular-toastify';
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/services/service.service';
 import { Categories, Product } from '../types/types';
 import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-produtos',
@@ -10,11 +12,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./produtos.component.scss'],
 })
 export class ProdutosComponent implements OnInit {
-  constructor(private api: ServiceService, private route: ActivatedRoute) {}
+  constructor(
+    private api: ServiceService,
+    private route: ActivatedRoute,
+    private cart: CartService,
+    private toast:ToastService
+  ) {}
 
   products!: Product[];
   categories!: Categories[];
-
+  category!: any;
   selectedIndex = 0;
 
   tabChanged(event: any) {
@@ -22,7 +29,13 @@ export class ProdutosComponent implements OnInit {
     console.log('Índice da tab ativa:', this.selectedIndex);
   }
 
-  category!: any;
+  addProduct = (product:Product) => {
+
+
+    this.cart.putProductInCart(product)
+    this.toast.success(`+${product.name}`)
+
+  };
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((parms) => {
@@ -37,8 +50,8 @@ export class ProdutosComponent implements OnInit {
       this.products = results.products;
       this.categories = results.categories;
 
-      //incere uma categoria todos a array
-      const addTodos = [ { name: 'Todos' }, ...this.categories];
+      //incere a categoria todos na array
+      const addTodos = [{ name: 'Todos' }, ...this.categories];
       console.log(addTodos);
 
       //cria uma nova array incerrindo um novo objeto com os valores ja filtrados
